@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Student;
+//user student
 class HomeController extends Controller
 {
     /**
@@ -23,7 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $student = Student::all();
-        return view('home',compact('student'));
+        return view('home');
     }
 }
