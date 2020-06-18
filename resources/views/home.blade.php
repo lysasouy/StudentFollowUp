@@ -16,36 +16,60 @@
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
-          <div id="home" class="container tab-pane active"><br>
-            <h3>HOME</h3>
+          <div id="home" class="container tab-pane active">
+            <br>
+            <button type="button" class="btn btn-success">Add New Student</button>
+            <br>
             <table class="table table-bordered">
               <tr>
                   <thead class="thead-dark">
-                      <td>Id</td>
+                      <td>Picture</td>
                       <td>First Name</td>
                       <td>Last Name</td>
                       <td>Class</td>
-                      <td>Description</td>
-                      <td>Picture</td>
-                      <td>ActiveFollowup</td>
+                      <td>Action</td>
                   </thead>
               
               </tr>
               @foreach($student as $row)
               <tr>
-              <td>{{ $row->id }}</td>
+              <td>{{ $row->picture }}</td>
               <td>{{ $row->firstname }}</td>
               <td>{{ $row->lastname }}</td>
               <td>{{ $row->class }}</td>
-              <td>{{ $row->description }}</td>
-              <td>{{ $row->picture }}</td>
-              <td>{{ $row->activeFollowup }}</td>
+              <td>
+                <a href="">out_of_followup  </a>
+                <a href=""> Edit</a>
+              </td>
               </tr>
               @endforeach
               </table>
           </div>
           <div id="menu1" class="container tab-pane fade"><br>
-            <h3>Menu 1</h3>
+            <table class="table table-bordered">
+              <tr>
+                  <thead class="thead-dark">
+                      <td>Picture</td>
+                      <td>First Name</td>
+                      <td>Last Name</td>
+                      <td>Class</td>
+                      <td>Action</td>
+                  </thead>
+              
+              </tr>
+              @foreach($student as $row)
+              <tr>
+              <td>{{ $row->picture }}</td>
+              <td>{{ $row->firstname }}</td>
+              <td>{{ $row->lastname }}</td>
+              <td>{{ $row->class }}</td>
+              <td>
+                <a href="">out_of_followup</a>
+                <a href="">Edit</a>
+              </td>
+              </tr>
+              @endforeach
+              </table>
           </div>
         </div>
       </div>
