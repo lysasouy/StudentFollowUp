@@ -19,6 +19,7 @@ class CreateStudentsTable extends Migration
             $table->string('lastname');
             $table->string('class');
             $table->string('description');
+            $table->string('tutor');
             $table->string('picture');
             $table->integer('activeFollowup')->default(0);
             $table->unsignedBigInteger('user_id')->nullable();

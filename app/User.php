@@ -1,7 +1,10 @@
 <?php
 
-namespace App;
 
+namespace App;
+use App\Student;
+use App\Position;
+use App\Comment;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name','email','password',
     ];
 
     /**
@@ -36,4 +39,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function students(){
+        return $this ->hasMany(Student::class);
+    }
+    public function positions(){
+        return $this ->hasMany(Position::class);
+    }
+   public function comments(){
+    return $this ->hasMany(Comments::class);
+   }
 }

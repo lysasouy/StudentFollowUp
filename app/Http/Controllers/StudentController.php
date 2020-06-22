@@ -1,8 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Student;
+use Auth;
+use App\User;
+use Image;
+
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -24,7 +26,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('students.addstudent');
+        // return "Hello";
     }
 
     /**
@@ -35,7 +38,23 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user =  User::find(Auth::id());
+        $student = new Student();
+        $student->firstname = $request->get('firstname');
+        $student->lastname = $request->get('lastname');
+        $student->class = $request->get('class');
+        $student->tutor = $request->get('tutor');
+
+        $student->description = $request->get('description');
+        
+        $img = $request->file('picture');
+        $filename = time() . '.' . $img->getClientOriginalExtension();
+        $location = public_path('image/'.$filename);
+        Image::make($img)->resize(100,100)->save($location);
+        $student->picture = $filename;
+        $student->user_id = $user->id;  
+        $student->save();
+        return redirect('admin/dashboard'); 
     }
 
     /**
@@ -44,9 +63,10 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show($id)
     {
-        //
+        // $student = Student::find($id);
+        // return view('students.viewdetail', compact('student'));
     }
 
     /**
@@ -55,9 +75,10 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
-        //
+        $student = Student::find($id);
+        return view('students.editStudent', compact('student'));
     }
 
     /**
@@ -67,9 +88,25 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request,$id)
     {
-        //
+        $user =  User::find(Auth::user()->id);
+        $student = Student::find($id);
+        $student->firstname = $request->get('firstname');
+        $student->lastname = $request->get('lastname');
+        $student->class = $request->get('class');
+        $student->tutor = $request->get('tutor');
+        $student->description = $request->get('description');
+        if ($request->hasfile('picture')){
+            $file = $request->file('picture');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). ".".$extension;
+            $file->move('image/', $filename);
+            $student->picture = $filename;
+        }
+        $student->user_id = $user->id;  
+        $student->save();
+        return redirect('admin/dashboard'); 
     }
 
     /**
