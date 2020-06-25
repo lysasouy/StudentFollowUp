@@ -17,23 +17,23 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Auth::routes();
+Auth::routes(); 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('students','StudentController');
+
+// Route::post('comment/{id}','CommentController@addComment')->name('addcomment');
+// Route::get('delete/{id}','CommentController@delete')->name('deletecomment');
+// Route::post('update/{id}','CommentController@updatecomment')->name('updatecomment');
 
 
 ///Route of role
 
 Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth','admin']], function (){
-
     Route::get('dashboard','DashboardController@index')->name('dashboard');
-  
-
 });
 
 Route::group(['as'=>'user.','prefix'=>'user','namespace'=>'User','middleware'=>['auth','user']], function (){
-
     Route::get('dashboard','DashboardController@index')->name('dashboard');
 
 });

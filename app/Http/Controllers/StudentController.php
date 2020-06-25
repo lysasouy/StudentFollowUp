@@ -65,8 +65,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        // $student = Student::find($id);
-        // return view('students.viewdetail', compact('student'));
+        $student = Student::find($id);
+        return view('students.viewdetail', compact('student'));
     }
 
     /**
@@ -95,7 +95,7 @@ class StudentController extends Controller
         $student->firstname = $request->get('firstname');
         $student->lastname = $request->get('lastname');
         $student->class = $request->get('class');
-        $student->tutor = $request->get('tutor');
+        // $student->tutor = $request->get('tutor');
         $student->description = $request->get('description');
         if ($request->hasfile('picture')){
             $file = $request->file('picture');

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App;
 use App\Student;
 use App\Position;
@@ -19,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','email','password',
+        'firstName','lastName', 'email', 'password','role','position',
     ];
 
     /**
@@ -44,10 +43,10 @@ class User extends Authenticatable
     public function students(){
         return $this ->hasMany(Student::class);
     }
-    public function positions(){
-        return $this ->hasMany(Position::class);
+    public function position(){
+        return $this ->belongsTo(Position::class);
     }
    public function comments(){
-    return $this ->hasMany(Comments::class);
+    return $this ->hasMany(Comment::class);
    }
 }
