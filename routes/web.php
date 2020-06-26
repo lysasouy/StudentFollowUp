@@ -22,9 +22,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('students','StudentController');
 
-// Route::post('comment/{id}','CommentController@addComment')->name('addcomment');
-// Route::get('delete/{id}','CommentController@delete')->name('deletecomment');
-// Route::post('update/{id}','CommentController@updatecomment')->name('updatecomment');
+Route::post('comment/{id}','CommentController@addComment')->name('addcomment');
+Route::get('delete/{id}','CommentController@delete')->name('deletecomment');
+Route::post('update/{id}','CommentController@updatecomment')->name('updatecomment');
 
 
 ///Route of role
