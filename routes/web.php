@@ -28,7 +28,7 @@ Route::post('update/{id}','CommentController@updatecomment')->name('updatecommen
 
 ///student followup
 Route::get('archiveFollowup/{id}','StudentController@archive')->name('archiveFollowup');
-
+Route::get('activeFollowup/{id}','StudentController@active')->name('activeFollowup');
 
 
 

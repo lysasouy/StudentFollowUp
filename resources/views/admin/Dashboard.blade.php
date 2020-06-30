@@ -95,7 +95,9 @@
           <td>
             <a href="{{route('students.show', $row->id)}}"><span class="material-icons text-danger">preview</span></a>&nbsp; | &nbsp;
             <a href="{{route('students.edit', $row->id)}}"><span  class="material-icons text-success">edit </span></a>
-            
+            <a href="{{route('activeFollowup', $row->id)}}"><span class="material-icons">
+              person_add_disabled
+              </span></a>
           </td>
           </tr>
           @endif

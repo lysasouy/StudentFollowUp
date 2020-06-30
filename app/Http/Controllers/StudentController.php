@@ -127,5 +127,12 @@ class StudentController extends Controller
         return back();
 
     }
-    
+    public function active($id)
+    {
+        $student = Student::find($id);
+        $student->activeFollowup = true;
+        $student->save();
+        return back();
+
+    }
 }
