@@ -119,4 +119,13 @@ class StudentController extends Controller
     {
         //
     }
+    public function archive($id)
+    {
+        $student = Student::find($id);
+        $student->activeFollowup = false;
+        $student->save();
+        return back();
+
+    }
+    
 }

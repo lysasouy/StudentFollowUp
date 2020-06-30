@@ -26,6 +26,11 @@ Route::post('comment/{id}','CommentController@addComment')->name('addcomment');
 Route::get('delete/{id}','CommentController@delete')->name('deletecomment');
 Route::post('update/{id}','CommentController@updatecomment')->name('updatecomment');
 
+///student followup
+Route::get('archiveFollowup/{id}','StudentController@archive')->name('archiveFollowup');
+
+
+
 
 ///Route of role
 

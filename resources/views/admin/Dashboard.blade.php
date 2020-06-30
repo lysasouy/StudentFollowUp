@@ -45,6 +45,9 @@
               </thead>
           </tr>
           @foreach($student as $row)
+          @if ($row->activeFollowup == 1)
+              
+         
           <tr>
             <td>
               <img class="mx-auto d-block" src="{{asset('image/'.$row->picture)}}" style="width: 100px;, height:100px;">
@@ -54,11 +57,17 @@
           <td>{{ $row->class }}</td>
           <td>{{ $row->description }}</td>
           <td>
-            <a href="{{route('students.destroy', $row->id)}}"><span class="material-icons text-danger">preview</span></a>&nbsp; | &nbsp;
+            <a href="{{route('students.show', $row->id)}}"><span class="material-icons text-danger">preview</span></a>&nbsp; | &nbsp;
             <a href="{{route('students.edit', $row->id)}}"><span  class="material-icons text-success">edit </span></a>
+            <a href="{{route('archiveFollowup', $row->id)}}"><span class="material-icons">
+              person_add_disabled
+              </span></a>
           </td>
           </tr>
+
+          @endif
           @endforeach
+
           </table>
       </div>
       <div id="menu1" class="container tab-pane fade"><br>
@@ -74,6 +83,7 @@
               </thead>
           </tr>
           @foreach($student as $row)
+          @if ($row->activeFollowup == 0)
           <tr>
          <td>
           <img class="mx-auto d-block" src="{{asset('image/'.$row->picture)}}" style="width: 100px;, height:100px;">
@@ -85,8 +95,10 @@
           <td>
             <a href="{{route('students.show', $row->id)}}"><span class="material-icons text-danger">preview</span></a>&nbsp; | &nbsp;
             <a href="{{route('students.edit', $row->id)}}"><span  class="material-icons text-success">edit </span></a>
+            
           </td>
           </tr>
+          @endif
           @endforeach
           </table>
       </div>
